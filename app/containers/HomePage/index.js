@@ -28,6 +28,8 @@ import H2 from 'components/H2';
 import List from 'components/List';
 import ListItem from 'components/ListItem';
 import LoadingIndicator from 'components/LoadingIndicator';
+import RD3PIE from 'components/RD3PIE';
+
 
 import styles from './styles.css';
 
@@ -106,6 +108,7 @@ export class HomePage extends React.Component {
               </label>
             </form>
             {mainContent}
+            <RD3PIE />
           </section>
           <Button handleRoute={this.openAboutPage}>About</Button>
           <Button handleRoute={this.openGitHubPage}>GitHub</Button>
