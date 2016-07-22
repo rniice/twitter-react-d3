@@ -17,9 +17,7 @@ import {
   selectError,
 } from 'containers/App/selectors';
 
-import {
-  selectUsername,
-} from './selectors';
+import { selectUsername, selectTwitterHash} from './selectors';
 
 import { changeUsername } from './actions';
 import { loadRepos } from '../App/actions';
@@ -90,14 +88,13 @@ export class HomePage extends React.Component {
         />
         <div>
           <section className={`${styles.textSection} ${styles.centered}`}>
-            <H2>Start your next react project in seconds</H2>
-            <p>A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices</p>
+            <H2>Let's See What's Happening on Twitter</H2>
+            <p>Follow a Trending Twitter Topic with Live Visualization</p>
           </section>
           <section className={styles.textSection}>
-            <H2>Try me!</H2>
             <form className={styles.usernameForm} onSubmit={this.props.onSubmitForm}>
               <label htmlFor="username">Show Github repositories by
-                <span className={styles.atPrefix}>@</span>
+                <span className={styles.atPrefix}>#</span>
                 <input
                   id="username"
                   className={styles.input}
@@ -132,15 +129,18 @@ HomePage.propTypes = {
   onSubmitForm: React.PropTypes.func,
   username: React.PropTypes.string,
   onChangeUsername: React.PropTypes.func,
+  onChangeTwitterHash: React.PropTypes.func
 };
 
 function mapDispatchToProps(dispatch) {
   return {
     onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
+    onChangeTwitterHash: (evt) => dispatch(changeTwitterHash(evt.target.value)),
     changeRoute: (url) => dispatch(push(url)),
     onSubmitForm: (evt) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(loadRepos());
+      //dispatch(loadTwitterData());
     },
 
     dispatch,
@@ -150,6 +150,7 @@ function mapDispatchToProps(dispatch) {
 const mapStateToProps = createStructuredSelector({
   repos: selectRepos(),
   username: selectUsername(),
+  twitterhash: selectTwitterHash(),
   loading: selectLoading(),
   error: selectError(),
 });

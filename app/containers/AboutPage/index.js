@@ -35,7 +35,7 @@ export class AboutPage extends React.Component {
     return (
       <div>
         <Helmet
-          title="Aboutt Page"
+          title="About Page"
           meta={[
             { name: 'description', content: 'About page of React.js Boilerplate application' },
           ]}
@@ -43,50 +43,27 @@ export class AboutPage extends React.Component {
         <H1>About</H1>
         <ul className={styles.list}>
           <li className={styles.listItem}>
-            <p className={styles.listItemTitle}>Quick scaffolding</p>
-            <p>Automate the creation of components, containers, routes, selectors
-            and sagas - and their tests - right from the CLI!</p>
+            <p className={styles.listItemTitle}>Twitter API Integration</p>
+            <p>Connect directly to the Twitter to retrieve data streams.</p>
           </li>
 
           <li className={styles.listItem}>
-            <p className={styles.listItemTitle}>Instant feedback</p>
-            <p>Enjoy the best DX and code your app at the speed of thought! Your
-            saved changes to the CSS and JS are reflected instantaneously
-            without refreshing the page. Preserve application state even when
-            you update something in the underlying code!</p>
+            <p className={styles.listItemTitle}>React Redux Framework</p>
+            <p>Get robust and predictable state management. Unidirectional data
+            flow allows for change logging and time travel debugging.</p>
           </li>
 
           <li className={styles.listItem}>
-            <p className={styles.listItemTitle}>Predictable state management</p>
-            <p>Unidirectional data flow allows for change logging and time travel
-            debugging.</p>
+            <p className={styles.listItemTitle}>D3JS Data Visualization</p>
+            <p>Use D3JS Libraries to Produce Dynamic Data Representations.</p>
           </li>
 
           <li className={styles.listItem}>
-            <p className={styles.listItemTitle}>Next generation JavaScript</p>
-            <p>Use template strings, object destructuring, arrow functions, JSX
-            syntax and more, today.</p>
+            <p className={styles.listItemTitle}>Bleeding Edge JavaScript</p>
+            <p>Template strings, object destructuring, arrow functions, JSX
+            syntax Routers, webpack, and ES6!</p>
           </li>
 
-          <li className={styles.listItem}>
-            <p className={styles.listItemTitle}>Next generation CSS</p>
-            <p>Write composable CSS that's co-located with your components for
-            complete modularity. Unique generated class names keep the
-            specificity low while eliminating style clashes. Ship only the
-            styles that are on the page for the best performance.</p>
-          </li>
-
-          <li className={styles.listItem}>
-            <p className={styles.listItemTitle}>Industry-standard routing</p>
-            <p>It's natural to want to add pages (e.g. `/about`) to your
-            application, and routing makes this possible.</p>
-          </li>
-
-          <li className={styles.listItem}>
-            <p className={styles.listItemTitle}>Offline-first</p>
-            <p>The next frontier in performant web apps: availability without a
-            network connection from the instant your users load the app.</p>
-          </li>
         </ul>
         <Button handleRoute={this.openHomePage}>Home</Button>
       </div>

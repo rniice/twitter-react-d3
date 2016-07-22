@@ -10,7 +10,7 @@ function Footer() {
         <p>This project is licensed under the MIT license.</p>
       </section>
       <section>
-        <p>Made with love by <A href="https://twitter.com/mxstbr">Max Stoiber</A>.</p>
+        <p>Made using <A href="https://github.com/mxstbr/react-boilerplate">react-boilerplate</A>.</p>
       </section>
     </footer>
   );

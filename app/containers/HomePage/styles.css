@@ -14,6 +14,7 @@ p,
 label {
   font-family: Georgia, Times, 'Times New Roman', serif;
   line-height: 1.5em;
+  color:#66757F;
 }
 
 .link {
@@ -29,14 +30,16 @@ label {
 
 .usernameForm {
   margin-bottom: 1em;
+  color: #55ACEE;
 }
 
 .input {
   outline: none;
-  border-bottom: 1px dotted #999;
+  border-bottom: 1px dotted #66757F;
+  color:#55ACEE;
 }
 
 .atPrefix {
-  color: black;
   margin-left: 0.4em;
+  color: #55ACEE;
 }

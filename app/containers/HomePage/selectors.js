@@ -11,7 +11,13 @@ const selectUsername = () => createSelector(
   (homeState) => homeState.get('username')
 );
 
+const selectTwitterHash = () => createSelector(
+  selectHome(),
+  (homeState) => homeState.get('twitterhash')
+);
+
 export {
   selectHome,
   selectUsername,
+  selectTwitterHash
 };
