@@ -13,7 +13,7 @@ import H1 from 'components/H1';
 
 import styles from './styles.css';
 
-export class FeaturePage extends React.Component {
+export class AboutPage extends React.Component {
 
   /**
    * Changes the route
@@ -35,12 +35,12 @@ export class FeaturePage extends React.Component {
     return (
       <div>
         <Helmet
-          title="Feature Page"
+          title="Aboutt Page"
           meta={[
-            { name: 'description', content: 'Feature page of React.js Boilerplate application' },
+            { name: 'description', content: 'About page of React.js Boilerplate application' },
           ]}
         />
-        <H1>Features</H1>
+        <H1>About</H1>
         <ul className={styles.list}>
           <li className={styles.listItem}>
             <p className={styles.listItemTitle}>Quick scaffolding</p>
@@ -93,7 +93,7 @@ export class FeaturePage extends React.Component {
     );
   }
 }
-FeaturePage.propTypes = {
+AboutPage.propTypes = {
   changeRoute: React.PropTypes.func,
 };
 
@@ -103,4 +103,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(FeaturePage);
+export default connect(null, mapDispatchToProps)(AboutPage);

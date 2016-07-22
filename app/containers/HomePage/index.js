@@ -51,11 +51,14 @@ export class HomePage extends React.Component {
     this.props.changeRoute(route);
   };
 
-  /**
-   * Changed route to '/features'
-   */
-  openFeaturesPage = () => {
-    this.openRoute('/features');
+  //changed route to '/about'
+  openAboutPage = () => {
+    this.openRoute('/about');
+  };
+
+  //changed route to '/github'
+  openGitHubPage = () => {
+    this.openRoute('/github');
   };
 
   render() {
@@ -107,7 +110,8 @@ export class HomePage extends React.Component {
             </form>
             {mainContent}
           </section>
-          <Button handleRoute={this.openFeaturesPage}>Features</Button>
+          <Button handleRoute={this.openAboutPage}>About</Button>
+          <Button handleRoute={this.openGitHubPage}>GitHub</Button>
         </div>
       </article>
     );
