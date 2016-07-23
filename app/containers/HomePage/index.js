@@ -90,12 +90,11 @@ export class HomePage extends React.Component {
         />
         <div>
           <section className={`${styles.textSection} ${styles.centered}`}>
-            <H2>Let's See What's Happening on Twitter</H2>
-            <p>Follow a Trending Twitter Topic with Live Visualization</p>
+            <H2>Follow a Trending Twitter Topic with Live Visualization</H2>
           </section>
-          <section className={styles.textSection}>
+          <section className={`${styles.textSection} ${styles.centered}`}>
             <form className={styles.usernameForm} onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="username">Show Github repositories by
+              <label htmlFor="username">Hashtag:
                 <span className={styles.atPrefix}>#</span>
                 <input
                   id="username"

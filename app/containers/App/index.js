@@ -14,7 +14,7 @@ import 'sanitize.css/sanitize.css';
 
 import Img from 'components/Img';
 import Footer from 'components/Footer';
-import Banner from './banner-metal.jpg';
+import Banner from './banner-image.png';
 import A from 'components/A';
 
 import styles from './styles.css';

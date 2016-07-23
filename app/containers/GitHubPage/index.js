@@ -48,6 +48,7 @@ export class GitHubPage extends React.Component {
             and sagas - and their tests - right from the CLI!</p>
           </li>
 
+          {/*
           <li className={styles.listItem}>
             <p className={styles.listItemTitle}>Instant feedback</p>
             <p>Enjoy the best DX and code your app at the speed of thought! Your
@@ -87,6 +88,7 @@ export class GitHubPage extends React.Component {
             <p>The next frontier in performant web apps: availability without a
             network connection from the instant your users load the app.</p>
           </li>
+          */}
         </ul>
         <Button handleRoute={this.openHomePage}>Home</Button>
       </div>
