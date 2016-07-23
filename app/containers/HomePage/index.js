@@ -20,7 +20,7 @@ import {
 import { selectUsername, selectTwitterHash} from './selectors';
 
 import { changeUsername } from './actions';
-import { loadRepos } from '../App/actions';
+import { loadRepos , loadTwitterData } from '../App/actions';
 
 import RepoListItem from 'containers/RepoListItem';
 import Button from 'components/Button';
@@ -78,6 +78,7 @@ export class HomePage extends React.Component {
     // If we're not loading, don't have an error and there are repos, show the repos
     } else if (this.props.repos !== false) {
       mainContent = (<List items={this.props.repos} component={RepoListItem} />);
+      //mainContent = ( <RD3PIE /> );
     }
 
     return (
@@ -100,14 +101,13 @@ export class HomePage extends React.Component {
                   id="username"
                   className={styles.input}
                   type="text"
-                  placeholder="mxstbr"
+                  placeholder="rniice"
                   value={this.props.username}
                   onChange={this.props.onChangeUsername}
                 />
               </label>
             </form>
             {mainContent}
-            <RD3PIE />
           </section>
           <Button handleRoute={this.openAboutPage}>About</Button>
           <Button handleRoute={this.openGitHubPage}>GitHub</Button>
@@ -130,6 +130,7 @@ HomePage.propTypes = {
   ]),
   onSubmitForm: React.PropTypes.func,
   username: React.PropTypes.string,
+  twitterhash: React.PropTypes.string,
   onChangeUsername: React.PropTypes.func,
   onChangeTwitterHash: React.PropTypes.func
 };
@@ -141,8 +142,8 @@ function mapDispatchToProps(dispatch) {
     changeRoute: (url) => dispatch(push(url)),
     onSubmitForm: (evt) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadRepos());
-      //dispatch(loadTwitterData());
+        //dispatch(loadRepos());
+        dispatch(loadTwitterData());
     },
 
     dispatch,

@@ -4,7 +4,7 @@
 
 import { take, call, put, select, fork, cancel } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { LOAD_REPOS } from 'containers/App/constants';
+import { LOAD_REPOS, LOAD_TWITTER } from 'containers/App/constants';
 import { reposLoaded, repoLoadingError } from 'containers/App/actions';
 
 import request from 'utils/request';
@@ -38,11 +38,32 @@ export function* getReposWatcher() {
 }
 
 /**
+ * Watches for LOAD_TWITTER action and calls handler
+ */
+export function* getTwitterWatcher() {
+  while (yield take(LOAD_TWITTER)) {
+    yield call(getRepos);
+  }
+}
+
+/**
  * Root saga manages watcher lifecycle
  */
 export function* githubData() {
   // Fork watcher so we can continue execution
   const watcher = yield fork(getReposWatcher);
+
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
+}
+
+/**
+ * Root saga manages watcher lifecycle
+ */
+export function* twitterData() {
+  // Fork watcher so we can continue execution
+  const watcher = yield fork(getTwitterWatcher);
 
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE);

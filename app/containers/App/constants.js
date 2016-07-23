@@ -9,6 +9,10 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
-export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
-export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
+export const LOAD_REPOS = 'twitter-react-d3/App/LOAD_REPOS';
+export const LOAD_REPOS_SUCCESS = 'twitter-react-d3/App/LOAD_REPOS_SUCCESS';
+export const LOAD_REPOS_ERROR = 'twitter-react-d3/App/LOAD_REPOS_ERROR';
+
+export const LOAD_TWITTER = 'twitter-react-d3/App/LOAD_TWITTER';
+export const LOAD_TWITTER_SUCCESS = 'twitter-react-d3/App/LOAD_TWITTER_SUCCESS';
+export const LOAD_TWITTER_ERROR = 'twitter-react-d3/App/LOAD_TWITTER_ERROR';

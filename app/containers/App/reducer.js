@@ -14,6 +14,9 @@ import {
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS,
   LOAD_REPOS_ERROR,
+  LOAD_TWITTER,
+  LOAD_TWITTER_SUCCESS,
+  LOAD_TWITTER_ERROR
 } from './constants';
 import { fromJS } from 'immutable';
 
@@ -40,6 +43,20 @@ function appReducer(state = initialState, action) {
         .set('loading', false)
         .set('currentUser', action.username);
     case LOAD_REPOS_ERROR:
+      return state
+        .set('error', action.error)
+        .set('loading', false);
+    case LOAD_TWITTER:
+      return state
+        .set('loading', true)
+        .set('error', false)
+        .setIn(['userData', 'repositories'], false);
+    case LOAD_TWITTER_SUCCESS:
+      return state
+        .setIn(['userData', 'repositories'], action.repos)
+        .set('loading', false)
+        .set('currentUser', action.username);
+    case LOAD_TWITTER_ERROR:
       return state
         .set('error', action.error)
         .set('loading', false);

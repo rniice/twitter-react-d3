@@ -12,6 +12,7 @@
 
 import {
   CHANGE_USERNAME,
+  CHANGE_TWITTER_HASH
 } from './constants';
 import { fromJS } from 'immutable';
 
@@ -27,6 +28,11 @@ function homeReducer(state = initialState, action) {
       // Delete prefixed '@' from the github username
       return state
         .set('username', action.name.replace(/@/gi, ''));
+    case CHANGE_TWITTER_HASH:
+      // Delete prefixed '@' from the github username
+      return state
+        .set('twitterhash', action.name.replace(/@/gi, ''));
+
     default:
       return state;
   }
