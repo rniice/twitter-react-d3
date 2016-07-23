@@ -73,4 +73,5 @@ export function* twitterData() {
 // Bootstrap sagas
 export default [
   githubData,
+  twitterData
 ];
