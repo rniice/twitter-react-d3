@@ -70,7 +70,7 @@ export class HomePage extends React.Component {
 
     // Show a loading indicator when we're loading
     if (this.props.loading) {
-      //mainContent = (<List component={LoadingIndicator} />);
+      mainContent = (<List component={LoadingIndicator} />);
 
     // Show an error if there is one
     } else if (this.props.error !== false) {
@@ -83,8 +83,7 @@ export class HomePage extends React.Component {
     } /*else if (this.props.repos !== false) {
       console.log(this.props);
       //mainContent = (<List items={this.props.repos} component={RepoListItem} />);
-      mainContent = ( <RD3PIE /> );
-    }*/ else {
+    }*/ else if (this.props.twitterdata !==false) {
       console.log(this.props.twitterdata);
       mainContent = ( <RD3PIE /> );
     }

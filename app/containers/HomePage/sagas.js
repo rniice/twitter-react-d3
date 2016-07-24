@@ -47,9 +47,7 @@ export function* getTwitter() {
 
   // Call our request helper (see 'utils/request')
   const twitter_response = yield call(request, requestURL);
-
-  const twitter_data = twitter_response.data.statuses;
-  //console.log(twitter_data);
+  const twitter_data = processTwitterData(twitter_response.data.statuses);
 
   if (twitter_data.length > 0) {
     yield put(twitterLoaded(twitter_data, twitter_hash));
@@ -57,6 +55,18 @@ export function* getTwitter() {
     yield put(twitterLoadingError("error loading twitter data"));
   }
 }
+
+/* TWITTER DATA HELPER PROCESSOR FUNCTION */
+//extract the top 5 most retweeted tweets with selected hashtag
+function processTwitterData(data){
+  let result = data.sort((a,b) => {
+    return b.retweet_count - a.retweet_count;
+  }).slice(0,5);
+
+  return result;   // {data[index].retweet_count}, {.text}, {.user.screen_name}
+}
+
+/******************************************/
 
 
 /**
