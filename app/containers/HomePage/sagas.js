@@ -8,7 +8,12 @@ import { LOAD_REPOS, LOAD_TWITTER } from 'containers/App/constants';
 import { reposLoaded, repoLoadingError } from 'containers/App/actions';
 
 import request from 'utils/request';
-import { selectUsername } from 'containers/HomePage/selectors';
+import { selectUsername, selectTwitterHash } from 'containers/HomePage/selectors';
+
+import dateFormat from 'dateformat';
+
+//created heroku app to access twitter API from backend without exposing AUTH KEYS
+const twitter_api_server = 'https://vast-citadel-27905.herokuapp.com/search/tweets';
 
 /**
  * Github repos request/response handler
@@ -32,17 +37,24 @@ export function* getRepos() {
  * Twitter Data request/response handler
  */
 export function* getTwitter() {
-  // Select username from store
-  const username = yield select(selectUsername());
-  const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
+  // Select twitter_hash from store
+  const twitter_hash = yield select(selectTwitterHash());
+  const now = new Date();
+  const date_now = dateFormat(now,"isoDate");
+
+  //parse data into the get request api for data from twitter
+  const requestURL = twitter_api_server + '?text=' + twitter_hash + '&date=' + date_now;
 
   // Call our request helper (see 'utils/request')
-  const repos = yield call(request, requestURL);
+  const twitter_response = yield call(request, requestURL);
 
-  if (!repos.err) {
-    yield put(reposLoaded(repos.data, username));
+  const twitter_data = twitter_response.data.statuses;
+  console.log(twitter_data);
+
+  if (!twitter_data.err) {
+    yield put(reposLoaded(twitter_data.data, twitter_hash));
   } else {
-    yield put(repoLoadingError(repos.err));
+    yield put(repoLoadingError(twitter_data.err));
   }
 }
 

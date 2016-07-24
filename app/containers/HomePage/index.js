@@ -19,7 +19,7 @@ import {
 
 import { selectUsername, selectTwitterHash} from './selectors';
 
-import { changeUsername } from './actions';
+import { changeUsername, changeTwitterHash } from './actions';
 import { loadRepos , loadTwitterData } from '../App/actions';
 
 import RepoListItem from 'containers/RepoListItem';
@@ -101,9 +101,9 @@ export class HomePage extends React.Component {
                   id="username"
                   className={styles.input}
                   type="text"
-                  placeholder="rniice"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
+                  placeholder="pokemon"
+                  value={this.props.twitterhash}
+                  onChange={this.props.onChangeTwitterHash}
                 />
               </label>
             </form>
