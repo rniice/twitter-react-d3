@@ -21,6 +21,8 @@ function RD3PIE(props) {
   }
 
   for(let k=0; k<data.length; k++) {
+      let tweet_url = 'http://twitter.com/' + props.items[k].user.screen_name + '/status/' + props.items[k].id_str;
+
       pieData.push({
           //label: props.items[k][text_prop],
           label: '@' + props.items[k].user.screen_name,
@@ -29,7 +31,7 @@ function RD3PIE(props) {
 
       tableDataJSX.push(
         <tr key={k}>
-          <td>{'@' + props.items[k].user.screen_name}</td>
+          <td> <a href={tweet_url} target="_blank">{'@' + props.items[k].user.screen_name}</a> </td>
           <td>{parseInt(props.items[k][value_prop])}</td>
           <td>{props.items[k][text_prop]}</td>
         </tr>
