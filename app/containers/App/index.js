@@ -29,8 +29,8 @@ function App(props) {
           { name: 'description', content: 'A React.js Boilerplate application' },
         ]}
       />
-      <A className={styles.logoWrapper} href="https://twitter.com/mxstbr">
-        <Img className={styles.logo} src={Banner} alt="react-boilerplate - Logo" />
+      <A className={styles.logoWrapper} href="https://github.com/rniice/twitter-react-d3">
+        <Img className={styles.logo} src={Banner} alt="twitter-react-d3 - Logo" />
       </A>
       {props.children}
       <Footer />
