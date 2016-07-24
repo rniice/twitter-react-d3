@@ -5,7 +5,7 @@
 import { take, call, put, select, fork, cancel } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOAD_REPOS, LOAD_TWITTER } from 'containers/App/constants';
-import { reposLoaded, repoLoadingError } from 'containers/App/actions';
+import { reposLoaded, repoLoadingError, twitterLoaded, twitterLoadingError } from 'containers/App/actions';
 
 import request from 'utils/request';
 import { selectUsername, selectTwitterHash } from 'containers/HomePage/selectors';
@@ -49,12 +49,12 @@ export function* getTwitter() {
   const twitter_response = yield call(request, requestURL);
 
   const twitter_data = twitter_response.data.statuses;
-  console.log(twitter_data);
+  //console.log(twitter_data);
 
-  if (!twitter_data.err) {
-    yield put(reposLoaded(twitter_data.data, twitter_hash));
+  if (twitter_data.length > 0) {
+    yield put(twitterLoaded(twitter_data, twitter_hash));
   } else {
-    yield put(repoLoadingError(twitter_data.err));
+    yield put(twitterLoadingError("error loading twitter data"));
   }
 }
 

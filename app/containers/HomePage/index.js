@@ -76,9 +76,10 @@ export class HomePage extends React.Component {
       mainContent = (<List component={ErrorComponent} />);
 
     // If we're not loading, don't have an error and there are repos, show the repos
-    } else if (this.props.repos !== false) {
-      mainContent = (<List items={this.props.repos} component={RepoListItem} />);
-      //mainContent = ( <RD3PIE /> );
+    } else if (this.props.twitter_data !== false) {
+      console.log(this.props.twitter_data);
+      //mainContent = (<List items={this.props.repos} component={RepoListItem} />);
+      mainContent = ( <RD3PIE /> );
     }
 
     return (
