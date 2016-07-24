@@ -19,6 +19,7 @@ import { fromJS } from 'immutable';
 // The initial state of the App
 const initialState = fromJS({
   username: '',
+  twitterhash: ''
 });
 
 function homeReducer(state = initialState, action) {
@@ -28,9 +29,8 @@ function homeReducer(state = initialState, action) {
       return state
         .set('username', action.name.replace(/@/gi, ''));
     case CHANGE_TWITTER_HASH:
-      // Delete prefixed '@' from the github username
       return state
-        .set('twitterhash', action.name.replace(/@/gi, ''));
+        .set('twitterhash', action.name);
 
     default:
       return state;

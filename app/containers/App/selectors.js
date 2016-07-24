@@ -11,6 +11,11 @@ const selectCurrentUser = () => createSelector(
   (globalState) => globalState.get('currentUser')
 );
 
+const selectCurrentTwitterHash = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.get('twitterhash')
+);
+
 const selectLoading = () => createSelector(
   selectGlobal(),
   (globalState) => globalState.get('loading')
@@ -24,6 +29,11 @@ const selectError = () => createSelector(
 const selectRepos = () => createSelector(
   selectGlobal(),
   (globalState) => globalState.getIn(['userData', 'repositories'])
+);
+
+const selectTwitterData = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.getIn(['twitterData', 'contents'])
 );
 
 const selectLocationState = () => {
@@ -48,5 +58,6 @@ export {
   selectLoading,
   selectError,
   selectRepos,
-  selectLocationState,
+  selectTwitterData,
+  selectLocationState
 };

@@ -13,6 +13,7 @@ import { createStructuredSelector } from 'reselect';
 
 import {
   selectRepos,
+  selectTwitterData,
   selectLoading,
   selectError,
 } from 'containers/App/selectors';
@@ -41,6 +42,9 @@ export class HomePage extends React.Component {
     if (this.props.username && this.props.username.trim().length > 0) {
       this.props.onSubmitForm();
     }
+    /*if (this.props.twitterhash && this.props.twitterhash.trim().length > 0) {
+      this.props.onSubmitForm();
+    }*/
   }
   /**
    * Changes the route
@@ -66,19 +70,22 @@ export class HomePage extends React.Component {
 
     // Show a loading indicator when we're loading
     if (this.props.loading) {
-      mainContent = (<List component={LoadingIndicator} />);
+      //mainContent = (<List component={LoadingIndicator} />);
 
     // Show an error if there is one
     } else if (this.props.error !== false) {
       const ErrorComponent = () => (
         <ListItem item={'Something went wrong, please try again!'} />
       );
-      mainContent = (<List component={ErrorComponent} />);
+      //mainContent = (<List component={ErrorComponent} />);
 
     // If we're not loading, don't have an error and there are repos, show the repos
-    } else if (this.props.twitter_data !== false) {
-      console.log(this.props.twitter_data);
+    } /*else if (this.props.repos !== false) {
+      console.log(this.props);
       //mainContent = (<List items={this.props.repos} component={RepoListItem} />);
+      mainContent = ( <RD3PIE /> );
+    }*/ else {
+      console.log(this.props.twitterdata);
       mainContent = ( <RD3PIE /> );
     }
 
@@ -129,6 +136,10 @@ HomePage.propTypes = {
     React.PropTypes.array,
     React.PropTypes.bool,
   ]),
+  twitterdata: React.PropTypes.oneOfType([
+    React.PropTypes.array,
+    React.PropTypes.bool,
+  ]),
   onSubmitForm: React.PropTypes.func,
   username: React.PropTypes.string,
   twitterhash: React.PropTypes.string,
@@ -153,6 +164,7 @@ function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   repos: selectRepos(),
+  twitterdata: selectTwitterData(),
   username: selectUsername(),
   twitterhash: selectTwitterHash(),
   loading: selectLoading(),

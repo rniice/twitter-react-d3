@@ -28,6 +28,9 @@ const initialState = fromJS({
   userData: fromJS({
     repositories: false,
   }),
+  twitterData: fromJS({
+    contents: false
+  })
 });
 
 function appReducer(state = initialState, action) {
@@ -50,12 +53,12 @@ function appReducer(state = initialState, action) {
       return state
         .set('loading', true)
         .set('error', false)
-        .setIn(['userData', 'repositories'], false);
+        .setIn(['twitterData', 'contents'], false);
     case LOAD_TWITTER_SUCCESS:
       return state
-        .setIn(['userData', 'repositories'], action.repos)
+        .setIn(['twitterData', 'contents'], action.twitter_data)
         .set('loading', false)
-        .set('currentUser', action.username);
+        .set('twitterhash', action.twitterhash);
     case LOAD_TWITTER_ERROR:
       return state
         .set('error', action.error)

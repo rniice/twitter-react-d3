@@ -49,7 +49,7 @@ export function* getTwitter() {
   const twitter_response = yield call(request, requestURL);
 
   const twitter_data = twitter_response.data.statuses;
-  //console.log(twitter_data);
+  console.log(twitter_data);
 
   if (twitter_data.length > 0) {
     yield put(twitterLoaded(twitter_data, twitter_hash));
