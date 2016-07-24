@@ -1,14 +1,18 @@
 import React from 'react';
 import { PieChart } from 'react-d3';
-
+//import Table from 'components/Table';
+//import TableItem from 'components/TableItem';
 import styles from './styles.css';
 
 function RD3PIE(props) {
   let data = props.items;
 
-  let label_prop = 'text'
+  let text_prop = 'text'
   let value_prop = 'retweet_count'
   let pieData = [];
+  let tableData = [];
+  let tableDataJSX = [];
+
   let total_retweets = null;
 
   //need to get total retweets to determine fractions of pie
@@ -17,34 +21,45 @@ function RD3PIE(props) {
   }
 
   for(let k=0; k<data.length; k++) {
-      pieData.push( {
-          label: props.items[k][label_prop],
+      pieData.push({
+          //label: props.items[k][text_prop],
+          label: '@' + props.items[k].user.screen_name,
           value: parseInt(props.items[k][value_prop] * 100/total_retweets)
       });
+
+      tableDataJSX.push(
+        <tr key={k}>
+          <td>{'@' + props.items[k].user.screen_name}</td>
+          <td>{parseInt(props.items[k][value_prop])}</td>
+          <td>{props.items[k][text_prop]}</td>
+        </tr>
+      );
   }
-
-  console.log(pieData);
-
-  /* example pieData format
-  let pieData = [
-    {label: 'Margarita', value: 20.0},
-    {label: 'John', value: 55.0},
-    {label: 'Tim', value: 25.0 }
-  ];
-  */
 
   //make the properties below be list expansion {...props}
   return (
-    <PieChart
-      data={pieData}
-      width={800}
-      height={800}
-      radius={200}
-      innerRadius={20}
-      sectorBorderColor="white"
-      /*title="Pie Chart"*/
-    />
+    <div>
+      <PieChart
+        data={pieData}
+        width={500}
+        height={300}
+        radius={100}
+        innerRadius={20}
+        sectorBorderColor="white"
+        labelTextFill="#55ACEE"
+        /*title="Pie Chart"*/
+      />
+      <table>
+        <tr>
+          <th>username</th>
+          <th>retweets</th>
+          <th>text snippet</th>
+        </tr>
+        {tableDataJSX}
+      </table>
 
+      {/*<Table items={tableData} component={TableItem} />*/}
+    </div>
   );
 }
 

@@ -97,7 +97,7 @@ export class HomePage extends React.Component {
         />
         <div>
           <section className={`${styles.textSection} ${styles.centered}`}>
-            <H2>Follow a Trending Twitter Topic with Live Visualization</H2>
+            <H2>Follow a Visualization of Most Retweeted Tweets</H2>
           </section>
           <section className={`${styles.textSection} ${styles.centered}`}>
             <form className={styles.usernameForm} onSubmit={this.props.onSubmitForm}>

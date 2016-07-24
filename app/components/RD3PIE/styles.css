@@ -3,3 +3,13 @@
   margin-bottom: 0.25em;
   color:#66757F;
 }
+
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  font-size: 14px;
+}
