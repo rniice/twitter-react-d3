@@ -84,8 +84,7 @@ export class HomePage extends React.Component {
       console.log(this.props);
       //mainContent = (<List items={this.props.repos} component={RepoListItem} />);
     }*/ else if (this.props.twitterdata !==false) {
-      console.log(this.props.twitterdata);
-      mainContent = ( <RD3PIE /> );
+      mainContent = ( <RD3PIE items={this.props.twitterdata} /> );
     }
 
     return (
