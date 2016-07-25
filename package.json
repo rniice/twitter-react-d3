@@ -1,15 +1,15 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.0.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "twitter-react-d3",
+  "version": "0.1.0",
+  "description": "twitter api integration and render in d3 visualization using react redux",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mxstbr/react-boilerplate.git"
+    "url": "git://github.com/rniice/twitter-react-d3.git"
   },
   "engines": {
     "npm": ">=3"
   },
-  "author": "Max Stoiber",
+  "author": "Michael Crockett",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
@@ -45,7 +45,8 @@
     "test:firefox": "npm run test -- --browsers Firefox",
     "test:safari": "npm run test -- --browsers Safari",
     "test:ie": "npm run test -- --browsers IE",
-    "coveralls": "cat ./coverage/lcov/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov/lcov.info | coveralls",
+    "postinstall": "npm run build:clean"
   },
   "lint-staged": {
     "lint:eslint": "*.js",
