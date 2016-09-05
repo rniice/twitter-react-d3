@@ -1,6 +1,9 @@
 Deployment 2 Test Options:
 1. https://github.com/mxstbr/react-boilerplate/issues/345
-
+git clone ...
+npm run setup
+npm run clean
+npm run build
 
 2. modify some parameters specific to heroku
 
