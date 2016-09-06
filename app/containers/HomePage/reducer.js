@@ -12,14 +12,14 @@
 
 import {
   CHANGE_USERNAME,
-  CHANGE_TWITTER_HASH
+  CHANGE_TWITTER_HASH,
 } from './constants';
 import { fromJS } from 'immutable';
 
 // The initial state of the App
 const initialState = fromJS({
   username: '',
-  twitterhash: ''
+  twitterhash: '',
 });
 
 function homeReducer(state = initialState, action) {

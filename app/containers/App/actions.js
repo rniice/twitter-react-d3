@@ -21,7 +21,7 @@ import {
   LOAD_REPOS_ERROR,
   LOAD_TWITTER,
   LOAD_TWITTER_SUCCESS,
-  LOAD_TWITTER_ERROR
+  LOAD_TWITTER_ERROR,
 } from './constants';
 
 /**
@@ -85,11 +85,11 @@ export function loadTwitterData() {
  *
  * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
  */
-export function twitterLoaded(twitter_data, hashtag) {
+export function twitterLoaded(twitterData, hashtag) {
   return {
     type: LOAD_TWITTER_SUCCESS,
-    twitter_data,
-    hashtag
+    twitterData,
+    hashtag,
   };
 }
 

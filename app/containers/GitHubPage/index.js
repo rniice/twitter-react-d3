@@ -10,7 +10,7 @@ import Helmet from 'react-helmet';
 
 import Button from 'components/Button';
 import H1 from 'components/H1';
-import A from 'components/A';
+// import A from 'components/A';
 
 import styles from './styles.css';
 

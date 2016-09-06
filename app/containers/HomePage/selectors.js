@@ -19,5 +19,5 @@ const selectTwitterHash = () => createSelector(
 export {
   selectHome,
   selectUsername,
-  selectTwitterHash
+  selectTwitterHash,
 };

@@ -18,12 +18,12 @@ import {
   selectError,
 } from 'containers/App/selectors';
 
-import { selectUsername, selectTwitterHash} from './selectors';
+import { selectUsername, selectTwitterHash } from './selectors';
 
 import { changeUsername, changeTwitterHash } from './actions';
-import { loadRepos , loadTwitterData } from '../App/actions';
+import { loadTwitterData } from '../App/actions';
 
-import RepoListItem from 'containers/RepoListItem';
+// import RepoListItem from 'containers/RepoListItem';
 import Button from 'components/Button';
 import H2 from 'components/H2';
 import List from 'components/List';
@@ -42,9 +42,9 @@ export class HomePage extends React.Component {
     if (this.props.username && this.props.username.trim().length > 0) {
       this.props.onSubmitForm();
     }
-    /*if (this.props.twitterhash && this.props.twitterhash.trim().length > 0) {
+    /* if (this.props.twitterhash && this.props.twitterhash.trim().length > 0) {
       this.props.onSubmitForm();
-    }*/
+    } */
   }
   /**
    * Changes the route
@@ -55,12 +55,12 @@ export class HomePage extends React.Component {
     this.props.changeRoute(route);
   };
 
-  //changed route to '/about'
+  // changed route to '/about'
   openAboutPage = () => {
     this.openRoute('/about');
   };
 
-  //changed route to '/github'
+  // changed route to '/github'
   openGitHubPage = () => {
     this.openRoute('/github');
   };
@@ -77,14 +77,10 @@ export class HomePage extends React.Component {
       const ErrorComponent = () => (
         <ListItem item={'Something went wrong, please try again!'} />
       );
-      //mainContent = (<List component={ErrorComponent} />);
-
+      mainContent = (<List component={ErrorComponent} />);
     // If we're not loading, don't have an error and there are repos, show the repos
-    } /*else if (this.props.repos !== false) {
-      console.log(this.props);
-      //mainContent = (<List items={this.props.repos} component={RepoListItem} />);
-    }*/ else if (this.props.twitterdata !==false) {
-      mainContent = ( <RD3PIE items={this.props.twitterdata} /> );
+    } else if (this.props.twitterdata !== false) {
+      mainContent = (<RD3PIE items={this.props.twitterdata} />);
     }
 
     return (
@@ -142,7 +138,7 @@ HomePage.propTypes = {
   username: React.PropTypes.string,
   twitterhash: React.PropTypes.string,
   onChangeUsername: React.PropTypes.func,
-  onChangeTwitterHash: React.PropTypes.func
+  onChangeTwitterHash: React.PropTypes.func,
 };
 
 function mapDispatchToProps(dispatch) {
@@ -152,8 +148,8 @@ function mapDispatchToProps(dispatch) {
     changeRoute: (url) => dispatch(push(url)),
     onSubmitForm: (evt) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-        //dispatch(loadRepos());
-        dispatch(loadTwitterData());
+        // dispatch(loadRepos());
+      dispatch(loadTwitterData());
     },
 
     dispatch,

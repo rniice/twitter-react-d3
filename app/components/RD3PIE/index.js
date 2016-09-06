@@ -1,44 +1,38 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { PieChart } from 'react-d3';
-//import Table from 'components/Table';
-//import TableItem from 'components/TableItem';
 import styles from './styles.css';
 
 function RD3PIE(props) {
-  let data = props.items;
+  const data = props.items;
+  const textProp = 'text';
+  const valueProp = 'retweet_count';
+  const pieData = [];
+  const tableDataJSX = [];
+  let totalRetweets = 0;
 
-  let text_prop = 'text'
-  let value_prop = 'retweet_count'
-  let pieData = [];
-  let tableData = [];
-  let tableDataJSX = [];
-
-  let total_retweets = null;
-
-  //need to get total retweets to determine fractions of pie
-  for(let i=0; i<data.length; i++) {
-      total_retweets += props.items[i][value_prop];
+  // need to get total retweets to determine fractions of pie
+  for (let i = 0; i < data.length; i++) {
+    totalRetweets += props.items[i][valueProp];
   }
 
-  for(let k=0; k<data.length; k++) {
-      let tweet_url = 'http://twitter.com/' + props.items[k].user.screen_name + '/status/' + props.items[k].id_str;
+  for (let k = 0; k < data.length; k++) {
+    const tweetURL = 'http://twitter.com/${props.items[k].user.screen_name}/status/${props.items[k].id_str}';
 
-      pieData.push({
-          //label: props.items[k][text_prop],
-          label: '@' + props.items[k].user.screen_name,
-          value: parseInt(props.items[k][value_prop] * 100/total_retweets)
-      });
+    pieData.push({
+      label: '@${props.items[k].user.screen_name}',
+      value: parseInt(props.items[k][valueProp] * 100 / totalRetweets, 10),
+    });
 
-      tableDataJSX.push(
-        <tr key={k}>
-          <td> <a href={tweet_url} target="_blank">{'@' + props.items[k].user.screen_name}</a> </td>
-          <td>{parseInt(props.items[k][value_prop])}</td>
-          <td>{props.items[k][text_prop]}</td>
-        </tr>
-      );
+    tableDataJSX.push(
+      <tr key={k}>
+        <td> <a href={tweetURL} target="_blank">{'@${props.items[k].user.screen_name'}</a> </td>
+        <td>{parseInt(props.items[k][valueProp], 10)}</td>
+        <td>{props.items[k][textProp]}</td>
+      </tr>
+    );
   }
 
-  //make the properties below be list expansion {...props}
+  // make the properties below be list expansion {...props}
   return (
     <div>
       <PieChart
@@ -49,23 +43,28 @@ function RD3PIE(props) {
         innerRadius={20}
         sectorBorderColor="white"
         labelTextFill="#55ACEE"
-        /*title="Pie Chart"*/
       />
-      <table>
-        <tr>
-          <th>username</th>
-          <th>retweets</th>
-          <th>text snippet</th>
-        </tr>
-        {tableDataJSX}
+      <table className={styles}>
+        <thead>
+          <tr>
+            <th>username</th>
+            <th>retweets</th>
+            <th>text snippet</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableDataJSX}
+        </tbody>
       </table>
-
-      {/*<Table items={tableData} component={TableItem} />*/}
     </div>
   );
 }
 
+RD3PIE.propTypes = {
+  items: PropTypes.any,
+};
+
 export default RD3PIE;
 
 
-//{/*<h1 className={styles.heading1} {...props} />*/}
+// {<h1 className={styles.heading1} {...props} />}

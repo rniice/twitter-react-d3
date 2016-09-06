@@ -13,7 +13,7 @@ const selectCurrentUser = () => createSelector(
 
 const selectCurrentTwitterHash = () => createSelector(
   selectGlobal(),
-  (globalState) => globalState.get('twitterhash')
+  (globalState) => globalState.get('twitterHash')
 );
 
 const selectLoading = () => createSelector(
@@ -58,6 +58,7 @@ export {
   selectLoading,
   selectError,
   selectRepos,
+  selectCurrentTwitterHash,
   selectTwitterData,
-  selectLocationState
+  selectLocationState,
 };

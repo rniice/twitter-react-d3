@@ -17,7 +17,7 @@
 
 import {
   CHANGE_USERNAME,
-  CHANGE_TWITTER_HASH
+  CHANGE_TWITTER_HASH,
 } from './constants';
 
 /**

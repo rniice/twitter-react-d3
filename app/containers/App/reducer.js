@@ -16,7 +16,7 @@ import {
   LOAD_REPOS_ERROR,
   LOAD_TWITTER,
   LOAD_TWITTER_SUCCESS,
-  LOAD_TWITTER_ERROR
+  LOAD_TWITTER_ERROR,
 } from './constants';
 import { fromJS } from 'immutable';
 
@@ -29,8 +29,8 @@ const initialState = fromJS({
     repositories: false,
   }),
   twitterData: fromJS({
-    contents: false
-  })
+    contents: false,
+  }),
 });
 
 function appReducer(state = initialState, action) {
@@ -56,9 +56,9 @@ function appReducer(state = initialState, action) {
         .setIn(['twitterData', 'contents'], false);
     case LOAD_TWITTER_SUCCESS:
       return state
-        .setIn(['twitterData', 'contents'], action.twitter_data)
+        .setIn(['twitterData', 'contents'], action.twitterData)
         .set('loading', false)
-        .set('twitterhash', action.twitterhash);
+        .set('twitterhash', action.twitterHash);
     case LOAD_TWITTER_ERROR:
       return state
         .set('error', action.error)

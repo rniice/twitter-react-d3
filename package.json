@@ -80,7 +80,9 @@
       "mocha": true
     },
     "rules": {
-      "max-len": 0
+      "max-len": 0,
+      "prefer-template": 0,
+      "arrow-body-style": 0
     },
     "settings": {
       "import/resolver": {
