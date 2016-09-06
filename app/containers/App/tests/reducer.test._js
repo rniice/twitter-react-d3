@@ -25,6 +25,7 @@ describe('appReducer', () => {
     expect(appReducer(undefined, {})).toEqual(expectedResult);
   });
 
+  /*
   it('should handle the loadRepos action correctly', () => {
     const expectedResult = state
       .set('loading', true)
@@ -57,4 +58,5 @@ describe('appReducer', () => {
 
     expect(appReducer(state, repoLoadingError(fixture))).toEqual(expectedResult);
   });
+  */
 });

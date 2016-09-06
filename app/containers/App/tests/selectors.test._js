@@ -21,6 +21,7 @@ describe('selectGlobal', () => {
   });
 });
 
+/*
 describe('selectCurrentUser', () => {
   const currentUserSelector = selectCurrentUser();
   it('should select the current user', () => {
@@ -74,6 +75,8 @@ describe('selectRepos', () => {
     expect(reposSelector(mockedState)).toEqual(repositories);
   });
 });
+
+*/
 
 describe('selectLocationState', () => {
   const locationStateSelector = selectLocationState();
