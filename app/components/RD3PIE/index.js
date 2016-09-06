@@ -25,7 +25,7 @@ function RD3PIE(props) {
 
     tableDataJSX.push(
       <tr key={k}>
-        <td> <a href={tweetURL} target="_blank">{'@${props.items[k].user.screen_name'}</a> </td>
+        <td> <a href={tweetURL} target="_blank">{'@${props.items[k].user.screen_name}'}</a> </td>
         <td>{parseInt(props.items[k][valueProp], 10)}</td>
         <td>{props.items[k][textProp]}</td>
       </tr>
