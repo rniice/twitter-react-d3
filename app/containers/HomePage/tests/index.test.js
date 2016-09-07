@@ -7,7 +7,7 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 
 import { HomePage } from '../index';
-import RepoListItem from 'containers/RepoListItem';
+// import RepoListItem from 'containers/RepoListItem';
 import List from 'components/List';
 import LoadingIndicator from 'components/LoadingIndicator';
 
@@ -33,7 +33,8 @@ describe('<HomePage />', () => {
       ).toBeGreaterThan(-1);
   });
 
-  it('should render the repositories if loading was successful', () => {
+  /*
+  it('should render the twitterData if loading was successful', () => {
     const repos = [{
       owner: {
         login: 'mxstbr',
@@ -52,13 +53,14 @@ describe('<HomePage />', () => {
 
     expect(renderedComponent.contains(<List items={repos} component={RepoListItem} />)).toEqual(true);
   });
+  */
 
-  it('should link to /features', () => {
+  it('should link to /about', () => {
     const openRouteSpy = expect.createSpy();
 
     // Spy on the openRoute method of the HomePage
     const openRoute = (dest) => {
-      if (dest === '/features') {
+      if (dest === '/about') {
         openRouteSpy();
       }
     };
@@ -66,7 +68,25 @@ describe('<HomePage />', () => {
     const renderedComponent = mount(
       <HomePage loading changeRoute={openRoute} />
     );
-    const button = renderedComponent.find('button');
+    const button = renderedComponent.find('button.about');
+    button.simulate('click');
+    expect(openRouteSpy).toHaveBeenCalled();
+  });
+
+  it('should link to /github', () => {
+    const openRouteSpy = expect.createSpy();
+
+    // Spy on the openRoute method of the HomePage
+    const openRoute = (dest) => {
+      if (dest === '/github') {
+        openRouteSpy();
+      }
+    };
+
+    const renderedComponent = mount(
+      <HomePage loading changeRoute={openRoute} />
+    );
+    const button = renderedComponent.find('button.github');
     button.simulate('click');
     expect(openRouteSpy).toHaveBeenCalled();
   });

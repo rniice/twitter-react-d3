@@ -1,23 +1,23 @@
 import expect from 'expect';
 
 import {
-  CHANGE_USERNAME,
+  CHANGE_TWITTER_HASH,
 } from '../constants';
 
 import {
-  changeUsername,
+  changeTwitterHash,
 } from '../actions';
 
 describe('Home Actions', () => {
-  describe('changeUsername', () => {
+  describe('changeTwitterHash', () => {
     it('should return the correct type and the passed name', () => {
       const fixture = 'Max';
       const expectedResult = {
-        type: CHANGE_USERNAME,
+        type: CHANGE_TWITTER_HASH,
         name: fixture,
       };
 
-      expect(changeUsername(fixture)).toEqual(expectedResult);
+      expect(changeTwitterHash(fixture)).toEqual(expectedResult);
     });
   });
 });

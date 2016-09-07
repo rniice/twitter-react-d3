@@ -110,8 +110,8 @@ export class HomePage extends React.Component {
             </form>
             {mainContent}
           </section>
-          <Button handleRoute={this.openAboutPage}>About</Button>
-          <Button handleRoute={this.openGitHubPage}>GitHub</Button>
+          <Button handleRoute={this.openAboutPage} className="about">About</Button>
+          <Button handleRoute={this.openGitHubPage} className="github">GitHub</Button>
         </div>
       </article>
     );

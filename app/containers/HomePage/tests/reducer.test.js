@@ -1,7 +1,7 @@
 import expect from 'expect';
 import homeReducer from '../reducer';
 import {
-  changeUsername,
+  changeTwitterHash,
 } from '../actions';
 import { fromJS } from 'immutable';
 
@@ -9,7 +9,7 @@ describe('homeReducer', () => {
   let state;
   beforeEach(() => {
     state = fromJS({
-      username: '',
+      twitterHash: '',
     });
   });
 
@@ -18,10 +18,10 @@ describe('homeReducer', () => {
     expect(homeReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  it('should handle the changeUsername action correctly', () => {
+  it('should handle the changeTwitterHash action correctly', () => {
     const fixture = 'mxstbr';
-    const expectedResult = state.set('username', fixture);
+    const expectedResult = state.set('twitterHash', fixture);
 
-    expect(homeReducer(state, changeUsername(fixture))).toEqual(expectedResult);
+    expect(homeReducer(state, changeTwitterHash(fixture))).toEqual(expectedResult);
   });
 });
