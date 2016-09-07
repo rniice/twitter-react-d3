@@ -11,9 +11,6 @@
  */
 
 import {
-  LOAD_REPOS_SUCCESS,
-  LOAD_REPOS,
-  LOAD_REPOS_ERROR,
   LOAD_TWITTER,
   LOAD_TWITTER_SUCCESS,
   LOAD_TWITTER_ERROR,
@@ -24,10 +21,7 @@ import { fromJS } from 'immutable';
 const initialState = fromJS({
   loading: false,
   error: false,
-  currentUser: false,
-  userData: fromJS({
-    repositories: false,
-  }),
+  twitterHash: false,
   twitterData: fromJS({
     contents: false,
   }),
@@ -35,20 +29,6 @@ const initialState = fromJS({
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_REPOS:
-      return state
-        .set('loading', true)
-        .set('error', false)
-        .setIn(['userData', 'repositories'], false);
-    case LOAD_REPOS_SUCCESS:
-      return state
-        .setIn(['userData', 'repositories'], action.repos)
-        .set('loading', false)
-        .set('currentUser', action.username);
-    case LOAD_REPOS_ERROR:
-      return state
-        .set('error', action.error)
-        .set('loading', false);
     case LOAD_TWITTER:
       return state
         .set('loading', true)
@@ -58,7 +38,7 @@ function appReducer(state = initialState, action) {
       return state
         .setIn(['twitterData', 'contents'], action.twitterData)
         .set('loading', false)
-        .set('twitterhash', action.twitterHash);
+        .set('twitterHash', action.twitterHash);
     case LOAD_TWITTER_ERROR:
       return state
         .set('error', action.error)
