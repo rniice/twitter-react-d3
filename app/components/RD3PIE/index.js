@@ -10,27 +10,43 @@ function RD3PIE(props) {
   const tableDataJSX = [];
   let totalRetweets = 0;
 
-  // need to get total retweets to determine fractions of pie
-  for (let i = 0; i < data.length; i++) {
-    totalRetweets += props.items[i][valueProp];
-  }
+  if (data) {
+    // need to get total retweets to determine fractions of pie
+    for (let i = 0; i < data.length; i++) {
+      totalRetweets += props.items[i][valueProp];
+    }
 
-  for (let k = 0; k < data.length; k++) {
-    const tweetURL = 'http://twitter.com/' + props.items[k].user.screen_name + '/status/' + props.items[k].id_str;
+    for (let k = 0; k < data.length; k++) {
+      const tweetURL = 'http://twitter.com/' + props.items[k].user.screen_name + '/status/' + props.items[k].id_str;
 
+      pieData.push({
+        label: '@' + props.items[k].user.screen_name,
+        value: parseInt(props.items[k][valueProp] * 100 / totalRetweets, 10),
+      });
+
+      tableDataJSX.push(
+        <tr key={k}>
+          <td> <a href={tweetURL} target="_blank">{'@' + props.items[k].user.screen_name}</a> </td>
+          <td>{parseInt(props.items[k][valueProp], 10)}</td>
+          <td>{props.items[k][textProp]}</td>
+        </tr>
+      );
+    }
+  } else {
     pieData.push({
-      label: '@' + props.items[k].user.screen_name,
-      value: parseInt(props.items[k][valueProp] * 100 / totalRetweets, 10),
+      label: 'NA',
+      value: 100,
     });
 
     tableDataJSX.push(
-      <tr key={k}>
-        <td> <a href={tweetURL} target="_blank">{'@' + props.items[k].user.screen_name}</a> </td>
-        <td>{parseInt(props.items[k][valueProp], 10)}</td>
-        <td>{props.items[k][textProp]}</td>
+      <tr key={0}>
+        <td>'NA'</td>
+        <td>'NA'</td>
+        <td>'NA'</td>
       </tr>
     );
   }
+
 
   // make the properties below be list expansion {...props}
   return (

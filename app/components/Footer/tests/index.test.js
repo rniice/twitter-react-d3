@@ -12,7 +12,7 @@ describe('<Footer />', () => {
     );
     expect(renderedComponent.contains(
       <section>
-        <p>This project is licensed under the MIT license.</p>
+        <p>MIT License Code and Boilerplate.</p>
       </section>
     )).toEqual(true);
   });
@@ -21,7 +21,7 @@ describe('<Footer />', () => {
     const renderedComponent = shallow(<Footer />);
     expect(renderedComponent.contains(
       <section>
-        <p>Made with love by <A href="https://twitter.com/mxstbr">Max Stoiber</A>.</p>
+        <p>Made by Michael Crockett. Built with <A href="https://github.com/mxstbr/react-boilerplate">react-boilerplate</A>.</p>
       </section>
     )).toEqual(true);
   });
