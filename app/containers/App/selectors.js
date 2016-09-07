@@ -6,11 +6,6 @@ import { createSelector } from 'reselect';
 
 const selectGlobal = () => (state) => state.get('global');
 
-const selectCurrentUser = () => createSelector(
-  selectGlobal(),
-  (globalState) => globalState.get('currentUser')
-);
-
 const selectCurrentTwitterHash = () => createSelector(
   selectGlobal(),
   (globalState) => globalState.get('twitterHash')
@@ -24,11 +19,6 @@ const selectLoading = () => createSelector(
 const selectError = () => createSelector(
   selectGlobal(),
   (globalState) => globalState.get('error')
-);
-
-const selectRepos = () => createSelector(
-  selectGlobal(),
-  (globalState) => globalState.getIn(['userData', 'repositories'])
 );
 
 const selectTwitterData = () => createSelector(
@@ -54,10 +44,8 @@ const selectLocationState = () => {
 
 export {
   selectGlobal,
-  selectCurrentUser,
   selectLoading,
   selectError,
-  selectRepos,
   selectCurrentTwitterHash,
   selectTwitterData,
   selectLocationState,

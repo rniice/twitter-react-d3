@@ -3,10 +3,10 @@ import expect from 'expect';
 
 import {
   selectGlobal,
-  selectCurrentUser,
+  selectCurrentTwitterHash,
   selectLoading,
   selectError,
-  selectRepos,
+  selectTwitterData,
   selectLocationState,
 } from '../selectors';
 
@@ -21,17 +21,16 @@ describe('selectGlobal', () => {
   });
 });
 
-/*
-describe('selectCurrentUser', () => {
-  const currentUserSelector = selectCurrentUser();
+describe('selectCurrentTwitterHash', () => {
+  const currentUserSelector = selectCurrentTwitterHash();
   it('should select the current user', () => {
-    const username = 'mxstbr';
+    const hashtag = 'mxstbr';
     const mockedState = fromJS({
       global: {
-        currentUser: username,
+        twitterHash: hashtag,
       },
     });
-    expect(currentUserSelector(mockedState)).toEqual(username);
+    expect(currentUserSelector(mockedState)).toEqual(hashtag);
   });
 });
 
@@ -61,22 +60,20 @@ describe('selectError', () => {
   });
 });
 
-describe('selectRepos', () => {
-  const reposSelector = selectRepos();
-  it('should select the repos', () => {
-    const repositories = fromJS([]);
+describe('selectTwitterData', () => {
+  const twitterDataSelector = selectTwitterData();
+  it('should select the twitterdata', () => {
+    const twitterDataContents = fromJS('stuff');
     const mockedState = fromJS({
       global: {
-        userData: {
-          repositories,
+        twitterData: {
+          contents: twitterDataContents,
         },
       },
     });
-    expect(reposSelector(mockedState)).toEqual(repositories);
+    expect(twitterDataSelector(mockedState)).toEqual(twitterDataContents);
   });
 });
-
-*/
 
 describe('selectLocationState', () => {
   const locationStateSelector = selectLocationState();

@@ -12,15 +12,14 @@ import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 
 import {
-  selectRepos,
   selectTwitterData,
   selectLoading,
   selectError,
 } from 'containers/App/selectors';
 
-import { selectUsername, selectTwitterHash } from './selectors';
+import { selectTwitterHash } from './selectors';
 
-import { changeUsername, changeTwitterHash } from './actions';
+import { changeTwitterHash } from './actions';
 import { loadTwitterData } from '../App/actions';
 
 // import RepoListItem from 'containers/RepoListItem';
@@ -143,12 +142,10 @@ HomePage.propTypes = {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
     onChangeTwitterHash: (evt) => dispatch(changeTwitterHash(evt.target.value)),
     changeRoute: (url) => dispatch(push(url)),
     onSubmitForm: (evt) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-        // dispatch(loadRepos());
       dispatch(loadTwitterData());
     },
 
@@ -157,9 +154,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  repos: selectRepos(),
   twitterdata: selectTwitterData(),
-  username: selectUsername(),
   twitterhash: selectTwitterHash(),
   loading: selectLoading(),
   error: selectError(),
